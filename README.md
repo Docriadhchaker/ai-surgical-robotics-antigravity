@@ -232,81 +232,70 @@ Then open your browser at:
     http://127.0.0.1:7860
 ---
 
-🧠 How It Works (The Loop)
+## 🧠 How It Works (The Loop)
 
-Input
+### Input
+- User uploads an image or selects a tissue.
 
-User uploads an image or selects a tissue.
+### Lookup
+- System retrieves the corresponding `TissueProfile`  
+  (e.g. Liver ≈ 6 kPa, breaking point ≈ 5 N).
 
-Lookup
+### Agent Action
+- If **Auto-Tune** is clicked:
+  - the agent runs several short simulations with different PIDs,
+  - it minimises a cost function, for example:  
+    `Cost = Overshoot + SettlingTime + 1000 * DamageFlag`.
 
-System retrieves the corresponding TissueProfile
-(e.g. Liver ≈ 6 kPa, breaking point ≈ 5 N).
+### Output
+- The best PID gains are applied.
+- The main simulation is run and visualised with safety colours.
+- The XAI log explains what the agent did and why.
 
-Agent Action
+---
 
-If Auto-Tune is clicked:
+## 🔮 Roadmap
 
-the agent runs several short simulations with different PIDs,
+- Basic physics simulation (Hooke’s-law style + PID).
+- Web UI with Gradio.
+- Auto-tuning logic (Antigravity-style agent loop).
+- Breathing simulation as sinusoidal disturbance.
+- Explainability log and safety visualisation.
+- Advanced computer vision:
+  - real tissue segmentation via YOLO / custom CNN,
+  - or external APIs (e.g. Gemini Flash, etc.).
+- Haptic feedback:
+  - connect to a simple servo / actuator for physical demonstration.
+- Integration with real or virtual robot stacks (dVRK, Gazebo, Isaac Sim).
 
-it minimises a cost function, for example:
-Cost = Overshoot + SettlingTime + 1000 * DamageFlag.
+---
 
-Output
+## ⚠️ Disclaimer
 
-The best PID gains are applied.
+This software is a **research and educational prototype**.
 
-The main simulation is run and visualised with safety colours.
+- It is not a medical device.
+- It is not approved for clinical use.
+- It must not be used to control real surgical robots on patients.
 
-The XAI log explains what the agent did and why.
+Its goal is to explore ideas in AI-assisted control for surgical robotics and prosthetics,  
+and to stimulate discussion about safety, explainability and human-in-the-loop design.
 
-🔮 Roadmap
+---
 
- Basic physics simulation (Hooke’s-law style + PID).
-
- Web UI with Gradio.
-
- Auto-tuning logic (Antigravity-style agent loop).
-
- Breathing simulation as sinusoidal disturbance.
-
- Explainability log and safety visualisation.
-
- Advanced computer vision:
-
-real tissue segmentation via YOLO / custom CNN,
-
-or external APIs (e.g. Gemini Flash, etc.).
-
- Haptic feedback:
-
-connect to a simple servo / actuator for physical demonstration.
-
- Integration with real or virtual robot stacks (dVRK, Gazebo, Isaac Sim).
-
-⚠️ Disclaimer
-
-This software is a research and educational prototype.
-
-It is not a medical device.
-
-It is not approved for clinical use.
-
-It must not be used to control real surgical robots on patients.
-
-Its goal is to explore ideas in AI-assisted control for surgical robotics and prosthetics, and to stimulate discussion about safety, explainability and human-in-the-loop design.
-
-🤝 Contributing
+## 🤝 Contributing
 
 Contributions and discussions are welcome:
 
-Open an issue for bugs, questions or feature requests.
+- Open an issue for bugs, questions or feature requests.
+- Submit a pull request for improvements or experiments.
 
-Submit a pull request for improvements or experiments.
+---
 
-📜 License
+## 📜 License
 
-MIT License – see the LICENSE file for details.
+MIT License – see the `LICENSE` file for details.
+
 
 
 
